@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { AppContext } from "../../context/AppContext";
-import { fetchBudget } from "../../utils/budget-utils"
+import { fetchBudget, updateBudget } from "../../utils/budget-utils"
 
 const Budget = () => {
   const { budget, setBudget } = useContext(AppContext);
@@ -14,8 +14,8 @@ const Budget = () => {
   const handleSaveClick = () => {
     setBudget(newBudget);
     setIsEditing(false);
+    updateBudget(newBudget);
   };
-
 
   useEffect(() => {
     loadExpenses();

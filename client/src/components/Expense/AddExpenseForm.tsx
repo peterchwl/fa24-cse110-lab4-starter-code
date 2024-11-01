@@ -16,7 +16,7 @@ const AddExpenseForm = () => {
 
     // Exercise: Add add new expense to expenses context array
     const newExpense: Expense = {
-      id: String(expenses.length + 1),
+      id: String(Number(expenses[expenses.length-1].id) + 1),
       description: description,
       cost: Number(cost)
     };

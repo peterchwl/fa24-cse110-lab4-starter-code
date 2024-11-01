@@ -8,4 +8,7 @@ export function getBudget(res: Response, budget: number) {
 // Function to update the budget
 export function updateBudget(res: Response, body: any, budget: { amount: number }) {
     // TO DO: Implement updateBudget function
+    const { amount } = body;
+    budget.amount = amount;
+    res.status(200).json({ message: 'Budget updated successfully', budget });
 }

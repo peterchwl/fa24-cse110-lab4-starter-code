@@ -13,10 +13,16 @@ const AddExpenseForm = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    let nId;
+    if(expenses.length == 0){
+      nId = 0;
+    }
+    else{
+      nId = expenses[expenses.length-1].id
+    }
     // Exercise: Add add new expense to expenses context array
     const newExpense: Expense = {
-      id: String(Number(expenses[expenses.length-1].id) + 1),
+      id: String(Number(nId) + 1),
       description: description,
       cost: Number(cost)
     };

@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { Database } from "sqlite";
 
 export async function createExpenseServer(req: Request, res: Response, db: Database) {
+    console.log(req);
     try {
         // Type casting the request body to the expected format.
         const { id, cost, description } = req.body as { id: string, cost: number, description: string };
@@ -51,6 +52,6 @@ export async function getExpenses(req: Request, res: Response, db: Database) {
         return res.status(200).send({ data: expenses });
 
     } catch (error) {
-        return res.status(500).send({ error: `Failed to fetch expenses: ${error}` });
+        return res.status(400).send({ error: `Failed to fetch expenses: ${error}` });
     }
 }

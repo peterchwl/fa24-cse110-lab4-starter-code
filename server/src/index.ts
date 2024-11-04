@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { createBudgetEndpoints } from "./budget/budget-endpoints";
 import { createExpenseEndpoints } from "./expenses/expense-endpoints";
 import { budget } from "./constants";
@@ -20,15 +20,15 @@ app.listen(port, () => {
 
 // Initialize the database and start the server
 (async () => {
- const db = await initDB();
+  const db = await initDB();
 
- // Root endpoint to get test if the server is running
- app.get("/", (res: Response) => {
-   res.send({ "data": "Hello, TypeScript Express!" });
-   res.status(200);
- });
+  // Root endpoint to test if the server is running
+  app.get("/", (req: Request, res: Response) => {
+    res.send({ "data": "Hello, TypeScript Express!" });
+    res.status(200);
+  });
 
- createExpenseEndpoints(app, db);
+  createExpenseEndpoints(app, db);
 
- createBudgetEndpoints(app, budget);
+  createBudgetEndpoints(app, budget);
 })();
